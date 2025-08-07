@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.M.S Construction - Build Your Dream House Today</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Neumorphism Styles */
+        .neomorphic {
+            background: #f0f0f3;
+            box-shadow: 
+                20px 20px 60px #d1d1d4,
+                -20px -20px 60px #ffffff;
+            border-radius: 15px;
+        }
+
+        .neomorphic-pressed {
+            background: #f0f0f3;
+            box-shadow: 
+                inset 8px 8px 16px #d1d1d4,
+                inset -8px -8px 16px #ffffff;
+            border-radius: 15px;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        /* Header - Professional Glassmorphism */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo Section - Left Side (No Box) */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-design {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+            line-height: 1;
+            letter-spacing: 2px;
+        }
+
+        .logo-subtext {
+            font-size: 10px;
+            color: #666;
+            margin-top: 2px;
+            letter-spacing: 1px;
+        }
+
+        .logo-dots {
+            display: flex;
+            gap: 4px;
+            margin-top: 5px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .dot.green { background-color: #27ae60; }
+        .dot.yellow { background-color: #f1c40f; }
+        .dot.gray { background-color: #666; }
+
+        .company-name {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .company-name .highlight {
+            color: #27ae60;
+        }
+
+        /* Navigation - Right Side */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            background: rgba(39, 174, 96, 0.1);
+            color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 
+                20px 20px 60px rgba(37, 211, 102, 0.3),
+                -20px -20px 60px rgba(37, 211, 102, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 
+                25px 25px 70px rgba(37, 211, 102, 0.4),
+                -25px -25px 70px rgba(37, 211, 102, 0.2);
+        }
+
+        /* Hero Section - Dream House Focus */
+        .hero {
+            background: linear-gradient(135deg, 
+                rgba(240, 240, 243, 0.9) 0%, 
+                rgba(255, 255, 255, 0.7) 100%);
+            padding: 140px 0 100px;
+            margin-top: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23f0f0f3" opacity="0.1" points="0,0 1000,200 1000,800 0,1000"/></svg>');
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .dream-text {
+            font-size: 1.8rem;
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 
+                10px 10px 30px rgba(39, 174, 96, 0.3),
+                -10px -10px 30px rgba(39, 174, 96, 0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                15px 15px 40px rgba(39, 174, 96, 0.4),
+                -15px -15px 40px rgba(39, 174, 96, 0.2);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: #27ae60;
+            border: 2px solid #27ae60;
+            box-shadow: none;
+        }
+
+        .cta-button.secondary:hover {
+            background: #27ae60;
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            text-align: center;
+            font-weight: 300;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #27ae60, #f1c40f);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Section - Neomorphism */
+        .about-content {
+            background: #f0f0f3;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 
+                20px 20px 60px #d1d1d4,
+                -20px -20px 60px #ffffff;
+            position: relative;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(135deg, #27ae60, #f1c40f);
+            border-radius: 25px 0 0 25px;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* Services Section - Glass Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        .service-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Projects Section - Statistics */
+        .projects-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2.5rem;
+            background: #f0f0f3;
+            border-radius: 20px;
+            box-shadow: 
+                20px 20px 60px #d1d1d4,
+                -20px -20px 60px #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #27ae60;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section - Glass Effect */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #666, #999);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.3rem;
+            box-shadow: 0 10px 30px rgba(102, 102, 102, 0.3);
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .contact-card p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #27ae60;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #219a52;
+        }
+
+        .map-button {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            color: #333;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(241, 196, 15, 0.3);
+        }
+
+        .map-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(241, 196, 15, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(51, 51, 51, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .dream-text {
+                font-size: 1.4rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <!-- Logo - Left Side (No Box) -->
+            <div class="logo">
+                <div class="logo-design">
+                    <div class="logo-text">U.M.S</div>
+                    <div class="logo-subtext">CONSTRUCTION</div>
+                    <div class="logo-dots">
+                        <div class="dot green"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot gray"></div>
+                    </div>
+                </div>
+                <div class="company-name">
+                    <span class="highlight">U.M.S</span> Construction
+                </div>
+            </div>
+            
+            <!-- Navigation - Right Side -->
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/917010991820" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        💬
+    </a>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="dream-text">Build Your Dream House Today</div>
+            <h1><span class="highlight">UMS</span> Congratulations Cuddalore</h1>
+            <p>Transform your vision into reality with our expert construction services. From custom homes to apartment complexes, we build dreams that last a lifetime. Your perfect home awaits - let's make it happen together.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-button">Start Building Today</a>
+                <a href="#projects" class="cta-button secondary">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="about">
+            <h2>About U.M.S Construction</h2>
+            <div class="about-content">
+                <p>Since 2010, U.M.S Construction has been working diligently in the construction field, successfully completing over 40 houses and 10+ apartments across Cuddalore and Pondicherry. We specialize in constructing customized houses tailored to our clients' unique needs and vision. Our commitment to quality, attention to detail, and customer satisfaction has made us a trusted name in the construction industry. With years of experience and a dedicated team of professionals, we transform your dreams into reality.</p>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Our Professional Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">1</div>
+                    <h3>Total Contract Work</h3>
+                    <p>Complete construction solutions from foundation to finishing, handling all aspects of your building project with expertise and precision for your dream home.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">2</div>
+                    <h3>Manpower / Workforce</h3>
+                    <p>Skilled and experienced workforce ready to handle projects of any scale with professional excellence and timely delivery for your construction needs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">3</div>
+                    <h3>Civil Workers / Laborers</h3>
+                    <p>Expert civil workers and laborers trained in modern construction techniques to ensure quality workmanship in every dream house project.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Building Dreams Since 2010</h2>
+            <div class="projects-stats">
+                <div class="stat-item">
+                    <span class="stat-number">40+</span>
+                    <div class="stat-label">Dream Houses Built</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <div class="stat-label">Apartment Buildings</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">14+</span>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us - Let's Build Your Dream</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Visit Our Location</h3>
+                    <p>Cuddalore, Tamil Nadu</p>
+                    <a href="https://maps.app.goo.gl/gVh7D6fp2UW8qvzNA" target="_blank" class="map-button">
+                        View on Google Maps
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Call Us</h3>
+                    <p>Phone:</p>
+                    <a href="tel:+919791388153">+91 97913 88153</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>WhatsApp Chat</h3>
+                    <p>Quick Contact:</p>
+                    <a href="https://wa.me/917010991820">+91 70109 91820</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon"✉️</div>
+                    <h3>Email Us</h3>
+                    <p>Email:</p>
+                    <a href="mailto:muruguums@gmail.com">muruguums@gmail.com</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 U.M.S Construction. All rights reserved. Building your dreams since 2010.</p>
+        <p>🏠 Your Dream House Awaits - Contact Us Today!</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
